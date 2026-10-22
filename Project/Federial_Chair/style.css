@@ -1,0 +1,228 @@
+@import url('https://fonts.googleapis.com/css2?family=Libre+Caslon+Text:wght@400;700&family=Libre+Caslon+Display&family=IM+Fell+English:ital@0;1&family=Pinyon+Script&display=swap');
+
+:root {
+    --r-main-font: "Libre Caslon Text", "Songti SC", "Noto Serif SC", serif;
+    --r-heading-font: "Libre Caslon Display", "Songti SC", "Noto Serif SC", serif;
+}
+.reveal {
+  background-color: #ecd8a6;
+}
+.reveal .titlePage h1 {
+    position: relative;
+    z-index: 10;
+}
+
+.reveal .titlePage .subtitle {
+    position: absolute;
+    right: 40px;
+    text-align: right;
+    font-size: 0.6em;
+    background-color: rgba(250, 235, 215, 0.6);
+    color: #383737;
+    z-index: 7;          /* 比 h1 的 10 小，比图片的 1 要不要高看下面 */
+}
+.reveal .ref-list1,
+.reveal .ref-list2 {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+.reveal .ref-list1 li,
+.reveal .ref-list2 li {
+    font-size: 0.5em;
+    text-align: left;
+    margin-bottom: 0.3em;
+    word-break: break-all; /* 长 URL 自动换行,避免溢出 */
+}
+
+/* 参考文献:标准 APA 悬挂缩进(首行顶格,后续行缩进) */
+.reveal .ref-list1 li {
+    padding-left: 2em;
+    text-indent: -2em;
+}
+
+/* 图片来源:后续行与 "Figure N:" 之后的正文对齐 */
+.reveal .ref-list2 li {
+    padding-left: 4.8em;
+    text-indent: -4.8em;
+}
+.reveal .ref-list2 li b {
+    display: inline-block;
+    min-width: 4.5em;
+    text-indent: 0; /* 防止 inline-block 继承负缩进 */
+}
+.container {
+    display: grid;
+    grid-template-columns: repeat(12, minmax(0, 1fr));
+    grid-template-rows: auto 1fr;
+    gap: 10px;
+    align-items: start;
+    height: 100%;
+}
+.reveal h2.title {
+    grid-column: 1 / -1;
+    grid-row: 1;
+    font-size: 36px;
+    text-align: left;
+    margin: 0 0 10px;
+}
+
+.info {
+    grid-column: 1 / 7;
+    grid-row: 2;
+    min-width: 0;
+    padding: 10px;
+    text-align: left;
+}
+.info h3{
+    font-size: 29px;
+    text-align: left;
+    margin-bottom: 20px;
+}
+.info p{
+    font-size: 25px;
+}
+.two-col {
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+}
+
+.two-col h4 {
+    font-size: 24px;
+    margin: 0 0 8px;
+}
+
+.two-col ul {
+    margin: 0;
+    padding-left: 1.2em;
+}
+
+.info li{
+    font-size: 20px;
+}
+.info.small li{
+    font-size: 20px;
+}
+.info.small h3{
+    font-size: 24px;
+}
+.info.small p{
+    font-size: 20px;
+}
+
+.image {
+    grid-column: 7 / 13;
+    grid-row: 2;
+    min-width: 0;
+    text-align: left;
+}
+
+.image img {
+    width: 100%;
+    height: auto;
+    margin: 0;
+    max-height: 70vh;
+    object-fit: contain;
+    object-position: left top;
+}
+.image figcaption {
+    text-align: left;
+    font-size: 14px;
+    line-height: 1.5;
+}
+.image.pair {
+    display: flex;
+    gap: 16px;
+    align-items: flex-start;
+}
+
+.image.pair figure {
+    flex: 1;
+    min-width: 0;   /* 防止图片把 flex 项撑出去 */
+    margin: 0;
+}
+.slide-full {
+    padding: 0;
+    position: relative;
+    height: 100vh;
+}
+
+.slide-full img {
+    position: absolute;
+    inset: 0;   
+    width: 100%;
+    height: 100%;
+    max-height: none;   
+    object-fit: contain; 
+}
+.info img,
+.image img {
+    display: block;
+    width: 100%;
+    max-height: 60vh;
+    height: auto;
+    object-fit: contain;
+    object-position: left top;
+}
+
+.container.wide-left .info {
+    grid-column: 1 / 8;
+    padding: 0;
+}
+.container.wide-left .image {
+    grid-column: 8 / 13;
+}
+.container.wide-left .info img {
+    max-height: 75vh;}
+
+    reveal .title-img {
+    position: absolute;
+    width: 130px;          /* 控制大小 */
+    height: auto;
+    max-width: none;       /* 覆盖 reveal 默认的 95% 限制 */
+    max-height: none;
+    margin: 0;             /* 覆盖 reveal 对 img 的默认 margin */
+    border: none;
+    box-shadow: none;
+    background: none;
+    z-index: 0;            /* 想盖在文字上面就改成 10 */
+}
+
+.reveal .title-fig {
+    position: absolute;
+    width: 400px;          /* 控制图片大小 */
+    margin: 0;
+    z-index: 0;
+}
+
+.reveal .title-fig img {
+    width: 100%;
+    height: auto;
+    max-width: none;
+    max-height: none;
+    margin: 0;
+    border: none;
+    box-shadow: none;
+    background: none;
+    display: block;
+}
+
+.reveal .title-fig figcaption {
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+    margin-top: 6px;
+}
+
+.reveal .fig-left {
+    left: 40px;
+    bottom: -350px;
+    z-index: 1;
+}
+
+.reveal .fig-right {
+    right: 0px;
+    bottom: -300px;     /* 和 subtitle 错开，放在下方 */
+    z-index: 1;
+}
