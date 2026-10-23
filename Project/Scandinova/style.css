@@ -122,19 +122,7 @@ section{
 .reveal .container .image{
   grid-column: 7/13;
 }
-.reveal .grid-4 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  grid-template-rows: minmax(0, 1fr) minmax(0, 1fr);
-  gap: 6px;
-  height : 600px;
-}
 
-.reveal .cell {
-  display: flex;
-  flex-direction: column;
-  min-height: 0;
-}
 
 .slide-body-3 {
     grid-column: 1 / -1;
@@ -177,6 +165,8 @@ section{
   grid-column: 1 / -1;
   grid-row: 2;
   margin: 0;
+  font-size: 22px;
+  text-align: left;
 }
 
 .slide-body-3-row .country-title {
@@ -185,8 +175,11 @@ section{
 
 .slide-body-3-row .row-content ul {
     margin: 0;
-    padding-left: 1 em;
-    font-size: 12px;
+    padding-left: 1em;
+
+}
+.slide-body-3-row .row-content ul li {
+    font-size: 21px;
 }
 
 .slide-body-3-row .image {
