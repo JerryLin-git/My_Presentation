@@ -1,5 +1,5 @@
 Reveal.initialize({
   center: false, 
-  width: 1400,
+  width: 960,
   height: 700,
 });
