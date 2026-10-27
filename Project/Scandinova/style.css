@@ -175,7 +175,7 @@ section{
 
 .slide-body-3-row .row-content ul {
     margin: 0;
-    padding-left: 1em;
+    padding-left: 1.2em;
 
 }
 .slide-body-3-row .row-content ul li {
@@ -300,4 +300,17 @@ section{
 
 .references a {
     overflow-wrap: anywhere;
+}
+
+/* The borders */
+.reveal .offset-border {
+  padding: 0.2em 0.5em;
+  border: 3px solid #717a85;
+  box-shadow: 10px 10px 0 #032630;
+  border-radius: 20px 0 20px 0;
+  text-align: left;     /* reveal 默认居中，长句子左对齐更好读 */
+}
+.reveal .left_board{
+  border-style: groove;
+  border-left: 1px solid #717a85
 }
