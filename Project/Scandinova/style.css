@@ -2,12 +2,32 @@ section{
     position: relative;
 }
 
+.reveal .cover-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
 
-.author {
+/* Author information */
+.reveal .cover-content .author {
     position: absolute;
-    font-size:32px;
-    right: 0%;
-    bottom: -50%;
+    right: 0;
+    bottom: 30%;
+    top: auto;
+    margin: 0;
+    width: auto;
+    font-size: 24px;
+    line-height: 1.6;
+    text-align: right;
+    z-index: 10;
+}
+.reveal .cover-content h1 {
+    width: 100%;
+    text-align: right;
+}
+
+.reveal .cover-content h2 {
+    width: 100%;
     text-align: right;
 }
 .slide-title{
@@ -19,17 +39,16 @@ section{
 .reveal ol.timeline {
   display: flex;
   list-style: none;
-  margin: 0;
+  margin: 270px 0 0;
   padding: 0;
   width: 100%;
-  margin-top: 270px;
 }
 
 .reveal .timeline li {
   position: relative;
   flex: 1;
-  padding-top: 24px;
-  padding-right: 16px;
+  box-sizing: border-box;
+   padding: 24px 16px 0 0;
 }
 .reveal .timeline li:first-child::before {
     left: -50px;
@@ -48,14 +67,25 @@ section{
 }
 
 .reveal .timeline li::after {
-  content: "";
+  content: attr(data-year);
   position: absolute;
-  top: -5px;
+  top: -18px;
   left: 0;
-  width: 12px;
-  height: 12px;
+
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
-  background: #93a1a1;
+
+  background: #02313e;
+  border: 2px solid #d9b66f;
+  color: #d9b66f;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 12px;
+  z-index: 2;
 }
 
 .reveal .timeline time {
@@ -80,10 +110,16 @@ section{
 }
 
 .reveal .timeline .event {
+  position: relative;
   background: #02313e;
-  padding: 10px 12px;
-  border-radius: 6px;
+  color: #f5f3ed;
+
+  padding: 18px 16px;
+  border-radius: 8px;
+  border: 1px solid rgba(217, 182, 111, 0.3);
+
   box-sizing: border-box;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
 }
 
 .reveal .timeline li .event.up {
@@ -97,7 +133,12 @@ section{
 
 
 .reveal .timeline li .event.down {
-
+  position: absolute;
+  top: 24px;
+  left: 0;
+  right: 16px;
+  margin-top: 24px;
+  box-sizing: border-box;
 }
 
 .reveal .timeline .event h5 {
@@ -179,6 +220,12 @@ section{
   margin: 5px;
 }
 
+.slide-body-3 p{
+  font-size: 20pt;
+  text-align: left;
+  margin-left: 10px;
+}
+
 .slide-body-3-row {
     grid-column: 1 / -1;
     grid-row: 3;
@@ -190,7 +237,7 @@ section{
 .slide-body-3-row .text-col {
     display: grid;
     gap: 10px;
-    grid-column: 1 / 7;
+    grid-column: 1 / 8;
     
 }
 
@@ -206,18 +253,40 @@ section{
     margin: 0;
     font-size: 30px;
 }
-
-.slide-body-3-row .image {
-    grid-column: 8 / 13;
-    grid-row: 1;
+.slide-body-3-row figure.image {
+    position: absolute;
+    top: 10;
+    right: 0;
+    width: 38%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
     margin: 0;
+    padding: 0;
     min-width: 0;
 }
 
-.slide-body-3-row .image figcaption {
-    font-size: 11px;
-    line-height: 1.3;
+.slide-body-3-row figure.image img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 160px;
+    object-fit: contain;
+    object-position: left top;
+}
+
+.slide-body-3-row figure.image figcaption {
+    width: 100%;
+    margin: 0 0 12px;
+    font-size: 9px;
+    line-height: 1.2;
+    text-align: left;
     overflow-wrap: anywhere;
+}
+
+.slide-body-3-row figure.image figcaption a {
+    overflow-wrap: anywhere;
+    word-break: break-word;
 }
 
 .slide-intro {
@@ -238,13 +307,13 @@ section{
 } */
 .slide-body-3-row .row-content p {
     font-size: 18px;
-    margin: 0;
+    margin-left: 15px;
     line-height: 1.3;
 }
 
 .reveal .references {
   text-align: left;
-    font-size: 16px;
+    font-size: 12px;
     line-height: 1.25;
 }
 
@@ -257,16 +326,54 @@ section{
 }
 
 /* The borders */
+
 .reveal .offset-border {
   padding: 0.2em 0.5em;
-  border: 2px solid #717a85;
+
+  /* Gradient border */
+  border: 1px solid transparent;
+  background:
+    linear-gradient(var(--r-background-color), var(--r-background-color))
+      padding-box,
+    linear-gradient(
+      135deg,
+      #f0dfb5 0%,
+      #2b2b2b 35%,
+      #1a2425 70%,
+      #f0dfb5 100%
+    ) border-box;
+
+  /* Original shadow */
   box-shadow: 10px 10px 0 #032630;
+
   border-radius: 20px 0 20px 0;
-  text-align: left;     /* reveal 默认居中，长句子左对齐更好读 */
+  text-align: left;
 }
-.reveal .left_board{
-  border-style: groove;
-  border-left: 1px solid #717a85
+.reveal .left_board {
+    border: none;
+    position: relative;
+    
+}
+
+.reveal .left_board::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    height: 100%;
+    width: 1px;
+
+ background: linear-gradient(
+        to bottom,
+        #717a85 20%,
+        #717a85 70%,
+        transparent
+    );
+}
+.reveal .left_board p{
+  margin-top: 0px;
+  text-align: left;
+  font-size: 13pt
 }
 
 .reveal .slides section.scandi-cover {
@@ -293,6 +400,7 @@ section{
         rgba(0, 0, 0, 0.3) 78%,
         transparent 100%
     );
+
     mask-image: linear-gradient(
         to right,
         black 0%,
@@ -302,6 +410,21 @@ section{
         transparent 100%
     );
 } 
+.reveal .slides section.scandi-cover .cover-note {
+    position: absolute;
+    bottom: 12px;
+    left: 20px;
+    width: 52%;
+    box-sizing: border-box;
+
+    font-size: 14px;
+    line-height: 1.4;
+    text-align: left;
+    color: #fff;
+
+    z-index: 10;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+}
 .reveal .slides section.scandi-cover .cover-content {
     position: absolute;
     z-index: 2;
@@ -340,4 +463,35 @@ section{
     text-align: right;
     opacity: 0.7;
     z-index: 1;
+}
+.reveal .slides section .slide-body-3 {
+    background: transparent;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    box-sizing: border-box;
+}
+
+.reveal .slides section .slide-body-3 .question {
+    background:#0d202a;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    box-sizing: border-box;
+}
+
+.reveal .slides section .slide-body-3 .question h4 {
+    color: #d6c4a0;
+    margin-top: 0;
+}
+
+.reveal .slides section .slide-body-3 .question p {
+    color: #bdbcc1;
+    line-height: 1.6;
+}
+
+.reveal .slides section .slide-body-3 .question:nth-child(3) {
+    grid-column: 1 / -1;
 }
