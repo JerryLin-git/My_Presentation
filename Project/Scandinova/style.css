@@ -109,18 +109,45 @@ section{
 .container {
     display: grid;
     grid-template-columns: repeat(12, minmax(0, 1fr));
-    grid-template-rows: auto 1fr;
+    grid-template-rows: auto auto 1fr;
     gap: 10px;
     align-items: start;
     height: 100%;
+    padding: 0 20px;
+    box-sizing: border-box;
 }
 
-.reveal .container.info {
-  grid-column: 1 / 6;
+.slide-body-2 {
+    grid-column: 1 / -1;
+    grid-row: 2;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap:10px;
 }
 
-.reveal .container .image{
-  grid-column: 7/13;
+.slide-body-2 .image {
+    grid-column: auto;   /* 自动占一格 */
+    grid-row: auto;
+}
+
+.slide-body-2 .image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+.slide-body-2-row {
+    grid-column: 1 / -1;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-auto-rows: auto;          /* 每一行按内容自适应；想固定比例可改成 grid-template-rows: 2fr 1fr */
+    gap: 10px;
+    min-height: 0;
+}
+.slide-body-2 li{
+  font-size: 14pt;
+  text-align: left;
+  margin: 5px;
 }
 
 
@@ -130,6 +157,9 @@ section{
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     gap:10px;
+}
+.slide-body-3 p{
+  font-size: 18 pt;
 }
 
 .slide-body-3 .image {
@@ -142,23 +172,52 @@ section{
     height: auto;
     display: block;
 }
+
+.slide-body-3 li{
+  font-size: 16pt;
+  text-align: left;
+  margin: 5px;
+}
+
 .slide-body-3-row {
     grid-column: 1 / -1;
     grid-row: 3;
     display: grid;
-    grid-template-columns: minmax(0, 1fr);
-    grid-auto-rows: auto;          /* 每一行按内容自适应；想固定比例可改成 grid-template-rows: 2fr 1fr */
+    grid-template-columns: repeat(12, minmax(0, 1fr)); /* 左文字，右地图 */
+    column-gap: 10px;
+    align-items: start;
+}
+.slide-body-3-row .text-col {
+    display: grid;
     gap: 10px;
-    min-height: 0;
+    grid-column: 1 / 7;
+    
 }
 
 /* 每一行：左标题 + 右正文 */
 .slide-body-3-row .row-item {
     display: grid;
-    grid-template-columns: 160px minmax(0, 1fr);  /* 左边固定宽度，右边占满 */
+    grid-template-columns: 110px minmax(0, 1fr);
     column-gap: 12px;
-    align-items: start;            /* 标题和正文顶部对齐；想垂直居中改成 center */
-    min-height: 0;
+    align-items: start;
+}
+
+.slide-body-3-row .country-title {
+    margin: 0;
+    font-size: 30px;
+}
+
+.slide-body-3-row .image {
+    grid-column: 8 / 13;
+    grid-row: 1;
+    margin: 0;
+    min-width: 0;
+}
+
+.slide-body-3-row .image figcaption {
+    font-size: 11px;
+    line-height: 1.3;
+    overflow-wrap: anywhere;
 }
 
 .slide-intro {
@@ -169,125 +228,20 @@ section{
   text-align: left;
 }
 
-.slide-body-3-row .country-title {
-    margin: 0;
-}
-
-.slide-body-3-row .row-content ul {
+/* .slide-body-3-row .row-content ul {
     margin: 0;
     padding-left: 1.2em;
 
 }
 .slide-body-3-row .row-content ul li {
     font-size: 21px;
-}
-
-.slide-body-3-row .image {
-    min-height: 0;
-    overflow: hidden;
-}
-
-.slide-body-3-row .image img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;   /* 填满每一行，不变形 */
-    display: block;
-}
-
-.slide-body-3 li{
-  font-size: 16pt;
-  text-align: left;
-  margin: 5px;
-}
-
-.slide-body-3-row li{
-  font-size: 15pt;
-  text-align: left;
-  margin: 5px;
-}
-.slide-layout {
-  display: grid;
-  grid-template-columns: repeat(12, minmax(0, 1fr));
-  grid-template-rows: auto 1fr;      /* 第 1 行按标题高度，第 2 行占剩余空间 */
-  column-gap: 10px;
-  row-gap: 16px;
-}
-
-.slide-layout .title {
-  grid-column: 1 / -1;               /* 横跨整行 */
-  grid-row: 1;
-}
-
-.slide-layout .info {
-  grid-column: 1 / 7;                /* 左边 6 列 */
-  grid-row: 2;
-  min-width: 0;
-  font-size: 20px;
-}
-
-.slide-layout .image {
-  grid-column: 7 / 13;               /* 右边 6 列 */
-  grid-row: 2;
-  min-width: 0;
-}
-
-.slide-layout .image img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-.reveal .cell img {
-  width: 100%;
-  max-height: none;
-  object-fit: contain;
-  margin: 0;
-}
-.reveal .cell ul {
-  margin: 0;
-  padding-left: 0.9em;    /* 圆点到文字的距离，越小越近 */
-  list-style-position: outside;
-}
-
-.reveal .cell ul li::marker {
-  font-size: 0.7em;           /* 圆点小一点 */
-}
-
-.reveal .cell ul li {
-  margin: 0 0 10px;       /* 只保留底部间距 */
-  padding: 0;
-  line-height: 1.35;
-}
-
-.reveal .cell p {
-  margin: 6px 0 0;
-  font-size: 16px;
-}
-
-.image {
-    grid-column: 7 / 13;
-    grid-row: 2;
-    min-width: 0;
-    text-align: left;
-}
-
-.image img {
-    width: 100%;
-    height: auto;
+} */
+.slide-body-3-row .row-content p {
+    font-size: 18px;
     margin: 0;
-    max-height: 70vh;
-    object-fit: contain;
-    object-position: left top;
+    line-height: 1.3;
 }
-.image figcaption {
-    text-align: left;
-    font-size: 14px;
-    line-height: 1.5;
-}
-.image.pair {
-    display: flex;
-    gap: 16px;
-    align-items: flex-start;
-}
+
 .reveal .references {
   text-align: left;
     font-size: 16px;
@@ -305,7 +259,7 @@ section{
 /* The borders */
 .reveal .offset-border {
   padding: 0.2em 0.5em;
-  border: 3px solid #717a85;
+  border: 2px solid #717a85;
   box-shadow: 10px 10px 0 #032630;
   border-radius: 20px 0 20px 0;
   text-align: left;     /* reveal 默认居中，长句子左对齐更好读 */
@@ -313,4 +267,77 @@ section{
 .reveal .left_board{
   border-style: groove;
   border-left: 1px solid #717a85
+}
+
+.reveal .slides section.scandi-cover {
+    height: 100%;
+    padding: 0;
+}
+
+.reveal .slides section.scandi-cover .cover-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 58%;
+    height: 100%;
+    background-image: url("asset/fo60000002033433.jpg");
+    background-size: cover;
+    background-position: center;
+
+
+    -webkit-mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 35%,
+        rgba(0, 0, 0, 0.8) 55%,
+        rgba(0, 0, 0, 0.3) 78%,
+        transparent 100%
+    );
+    mask-image: linear-gradient(
+        to right,
+        black 0%,
+        black 35%,
+        rgba(0, 0, 0, 0.8) 55%,
+        rgba(0, 0, 0, 0.3) 78%,
+        transparent 100%
+    );
+} 
+.reveal .slides section.scandi-cover .cover-content {
+    position: absolute;
+    z-index: 2;
+    left: 48%;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 46%;
+    text-align: left;
+} 
+
+.reveal .slides section .corner-bg {
+    position: absolute;
+    right: 0;
+    bottom: -50px;
+    width: 60%;
+    max-height: 70%;
+    object-fit: cover;
+    opacity: 0.25;
+    -webkit-mask-image: linear-gradient(135deg, transparent 0%, rgba(0,0,0,.15) 35%, black 70%);
+    mask-image: linear-gradient(135deg, transparent 0%, rgba(0,0,0,.15) 35%, black 70%);
+}
+.container > figure.bg-image {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    z-index: 0;
+}
+
+.container > figure.bg-image figcaption {
+    position: absolute;
+    right: 12px;
+    bottom: -50px;
+    width: 38%;
+    font-size: 12px;
+    line-height: 1.4;
+    text-align: right;
+    opacity: 0.7;
+    z-index: 1;
 }
